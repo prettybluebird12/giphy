@@ -5,14 +5,15 @@
 
 $("#search-button").click(function(){
   $.ajax({
-      url:"https://api.giphy.com/v1/gifs/search?q=puppy&rating=pg&api_key=dc6zaTOxFJmzC",
+      url:"https://api.giphy.com/v1/gifs/search?q=octopus&rating=pg&api_key=dc6zaTOxFJmzC",
       method:"GET",
       success: function(response){
-          console.log(response.data[0].original.url);
-          $("body").append(response.data[0].original.url);
-      },
+        var index= Math.floor(Math.random()*response.data.length);
+          $("#img").html("<img src= " + response.data[index].images.fixed_width.url + ">");
+      
+        
+      }
       });
   
   
 });
-
